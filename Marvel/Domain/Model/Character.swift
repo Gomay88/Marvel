@@ -8,26 +8,37 @@ struct Character: Decodable {
     let modified: String
     let thumbnail: Thumbnail
     let resourceURI: String
-    let comics: Comic
-    let series: Comic
-    let stories: Comic
-    let events: Comic
+    let comics: Work
+    let series: Work
+    let stories: Work
+    let events: Work
     let urls: [Url]
 
     struct Thumbnail: Decodable {
         let path: String
-        let ext: String
+        let thumbnailExtension: String
+
+        enum CodingKeys: String, CodingKey {
+            case path
+            case thumbnailExtension = "extension"
+        }
     }
     
-    struct Comic: Decodable {
+    struct Work: Decodable {
         let available: Int
         let collectionURI: String
-        let items: [Url]
+        let items: [WorkItem]
         let returned: Int
     }
     
+    struct WorkItem: Codable {
+        let resourceURI: String
+        let name: String
+        let type: String?
+    }
+    
     struct Url: Decodable {
-        let type: String
         let url: String
+        let type: String
     }
 }
