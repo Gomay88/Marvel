@@ -46,7 +46,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L0p-rJ-lHP">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L0p-rJ-lHP">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="536"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-Du-8dv">
@@ -56,40 +56,30 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBg-Vk-TsM">
-                                        <rect key="frame" x="20" y="424" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="424" width="414" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comics:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mi-WO-FY5">
-                                        <rect key="frame" x="20" y="454.5" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="454.5" width="414" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Series:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nN7-Tj-VI2">
-                                        <rect key="frame" x="20" y="485" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="485" width="414" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stories:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKw-i4-jPI">
-                                        <rect key="frame" x="20" y="515.5" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="515.5" width="414" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="wKw-i4-jPI" firstAttribute="leading" secondItem="L0p-rJ-lHP" secondAttribute="leading" constant="20" id="9Zj-kG-QYR"/>
-                                    <constraint firstAttribute="trailing" secondItem="hBg-Vk-TsM" secondAttribute="trailing" constant="20" id="9nV-1s-PC5"/>
-                                    <constraint firstAttribute="trailing" secondItem="wKw-i4-jPI" secondAttribute="trailing" constant="20" id="I2A-YM-2yb"/>
-                                    <constraint firstAttribute="trailing" secondItem="6mi-WO-FY5" secondAttribute="trailing" constant="20" id="aCs-VN-af4"/>
-                                    <constraint firstItem="hBg-Vk-TsM" firstAttribute="leading" secondItem="L0p-rJ-lHP" secondAttribute="leading" constant="20" id="b3C-KM-mJo"/>
-                                    <constraint firstAttribute="trailing" secondItem="nN7-Tj-VI2" secondAttribute="trailing" constant="20" id="pM2-EG-bj1"/>
-                                    <constraint firstItem="nN7-Tj-VI2" firstAttribute="leading" secondItem="L0p-rJ-lHP" secondAttribute="leading" constant="20" id="ptG-Ze-ymG"/>
-                                    <constraint firstItem="6mi-WO-FY5" firstAttribute="leading" secondItem="L0p-rJ-lHP" secondAttribute="leading" constant="20" id="zZR-d7-QS1"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
