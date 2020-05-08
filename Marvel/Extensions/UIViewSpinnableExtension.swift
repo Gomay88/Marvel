@@ -1,10 +1,3 @@
-//
-//  UIImageViewSpinnable.swift
-//  Marvel
-//
-//  Created by Ana Real on 08/05/2020.
-//  Copyright © 2020 Gomi. All rights reserved.
-//
 
 import UIKit
 
