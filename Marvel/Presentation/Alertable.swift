@@ -17,13 +17,10 @@ extension Alertable where Self: UIViewController {
     func showAlert(title: String, message: String, actions: [UIAlertAction]?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        guard let actions = actions else {
-            showAlertController(alertController: alert)
-            return
-        }
-        
-        for action in actions {
-            alert.addAction(action)
+        if let actions = actions {
+            for action in actions {
+                alert.addAction(action)
+            }
         }
         
         showAlertController(alertController: alert)
