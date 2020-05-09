@@ -1,7 +1,7 @@
 
 import UIKit
 
-class CharactersListViewController: UIViewController, Spinnable {
+class CharactersListViewController: UIViewController, Spinnable, Alertable {
     private let presenter: CharactersListPresenter = CharactersListPresenterDefault()
     
     @IBOutlet weak var tableView: UITableView!

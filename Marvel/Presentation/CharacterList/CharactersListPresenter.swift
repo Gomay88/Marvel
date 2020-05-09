@@ -28,6 +28,7 @@ class CharactersListPresenterDefault: CharactersListPresenter {
         charactersInteractor.execute { (characters, error) in
             self.view?.endSpinner()
             guard let characters = characters else {
+                self.view?.showError(error: error!)
                 return
             }
             

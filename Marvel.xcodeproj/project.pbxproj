@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82BDCE782466AE9500D990FC /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BDCE772466AE9500D990FC /* Alertable.swift */; };
 		82DF7BA724656AC1008B866B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF7BA624656AC1008B866B /* AppDelegate.swift */; };
 		82DF7BA924656AC1008B866B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF7BA824656AC1008B866B /* SceneDelegate.swift */; };
 		82DF7BB024656AC3008B866B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82DF7BAF24656AC3008B866B /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82BDCE772466AE9500D990FC /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		82DF7BA324656AC1008B866B /* Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DF7BA624656AC1008B866B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82DF7BA824656AC1008B866B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				82DF7BFE2465AC6E008B866B /* CharacterList */,
 				82DF7BFF2465ACD0008B866B /* CharacterDetail */,
 				82DF7BFB2465AC62008B866B /* Spinnable.swift */,
+				82BDCE772466AE9500D990FC /* Alertable.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				82DF7BE124656C28008B866B /* RequestBuilder.swift in Sources */,
 				82DF7BE424656D22008B866B /* CharactersListViewController.swift in Sources */,
 				82DF7BEA24656DB1008B866B /* CharactersListPresenter.swift in Sources */,
+				82BDCE782466AE9500D990FC /* Alertable.swift in Sources */,
 				82DF7BED24657534008B866B /* CharactersRepository.swift in Sources */,
 				82DF7BF324657657008B866B /* Character.swift in Sources */,
 				82DF7BDB24656BE8008B866B /* BaseRepository.swift in Sources */,

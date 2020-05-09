@@ -7,9 +7,10 @@ protocol CharacterDetailInteractor {
 
 class CharacterDetailInteractorDefault: CharacterDetailInteractor {
     
-    private var charactersRepository: CharactersRepository = CharactersRepositoryDefault()
+    private var charactersRepository: CharactersRepository
     
     init() {
+        charactersRepository = CharactersRepositoryDefault()
     }
     
     func execute(characterId: Int, completion: @escaping (_ characters: Character?, _ error: Error?) -> ()) {

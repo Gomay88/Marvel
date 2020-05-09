@@ -1,7 +1,7 @@
 
 import UIKit
 
-class CharacterDetailViewController: UIViewController, Spinnable {
+class CharacterDetailViewController: UIViewController, Spinnable, Alertable {
     private let presenter: CharacterDetailPresenter = CharacterDetailPresenterDefault()
     var characterId: Int?
     

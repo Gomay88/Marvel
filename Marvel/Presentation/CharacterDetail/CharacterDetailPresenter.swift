@@ -26,7 +26,7 @@ class CharacterDetailPresenterDefault: CharacterDetailPresenter {
         characterDetailInteractor.execute(characterId: characterId) { (character, error) in
             self.view?.endSpinner()
             guard let character = character else {
-                //TODO: Show error
+                self.view?.showError(error: error!)
                 return
             }
             
