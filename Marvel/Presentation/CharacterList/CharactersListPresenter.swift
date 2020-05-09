@@ -5,7 +5,8 @@ protocol CharactersListPresenter {
     func setView(view: CharactersListViewController)
     func getCharacters(completion: @escaping() -> ())
     func numberOfCharacters() -> Int
-    func characterNameForRow(row: Int) -> Character
+    func characterNameForRow(row: Int) -> String
+    func characterImagePathForRow(row: Int) -> URL?
     func didSelectCharacter(characterId: Int)
 }
 
@@ -41,8 +42,12 @@ class CharactersListPresenterDefault: CharactersListPresenter {
         return characters.count
     }
     
-    func characterNameForRow(row: Int) -> Character {
-        return characters[row]
+    func characterNameForRow(row: Int) -> String {
+        return characters[row].name
+    }
+    
+    func characterImagePathForRow(row: Int) -> URL? {
+        return characters[row].imageURLPath
     }
     
     func didSelectCharacter(characterId: Int) {

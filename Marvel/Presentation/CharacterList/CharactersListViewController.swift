@@ -32,7 +32,7 @@ class CharactersListViewController: UIViewController, Spinnable, Alertable {
 
 extension CharactersListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 200
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,8 +40,14 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = presenter.characterNameForRow(row: indexPath.row).name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterListCell", for: indexPath) as! CharacterListCell
+        cell.nameLabel.text = presenter.characterNameForRow(row: indexPath.row)
+        
+        guard let url = presenter.characterImagePathForRow(row: indexPath.row) else {
+            return cell
+        }
+        
+        cell.characterImageView.load(url: url)
         
         return cell
     }

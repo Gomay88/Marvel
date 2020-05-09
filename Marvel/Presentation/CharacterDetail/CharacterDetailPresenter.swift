@@ -35,15 +35,7 @@ class CharacterDetailPresenterDefault: CharacterDetailPresenter {
     }
     
     func downloadImage(completion: @escaping(_ imageData: Data) -> ()) {
-        guard let path = character?.thumbnail.path else {
-            return
-        }
-        
-        guard let imageExtension = character?.thumbnail.thumbnailExtension else {
-            return
-        }
-        
-        guard let url = URL(string: path + "." + imageExtension) else {
+        guard let url = character?.imageURLPath else {
             return
         }
         

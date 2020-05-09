@@ -13,6 +13,14 @@ struct Character: Decodable {
     let stories: Work
     let events: Work
     let urls: [Url]
+    
+    var imageURLPath: URL? {
+        guard let url = URL(string: thumbnail.path + "." + thumbnail.thumbnailExtension) else {
+            return nil
+        }
+        
+        return url
+    }
 
     struct Thumbnail: Decodable {
         let path: String
