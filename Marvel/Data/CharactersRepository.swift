@@ -11,8 +11,7 @@ class CharactersRepositoryDefault: BaseRepository, CharactersRepository {
     func getCharacters(completion: @escaping (_ characters: CharactersResponse?, _ error: Error?)->()) {
         let dateFormatter = DateFormatter()
         let now = dateFormatter.string(from: Date())
-        let md5Params = MD5(string: now + Constants.privateKey + Constants.publicKey)
-        let md5ParamsHex =  md5Params.map { String(format: "%02hhx", $0) }.joined()
+        let md5ParamsHex = getHashForString(string: now)
         
         let request = RequestBuilder.marvel()
             .get()
@@ -26,8 +25,7 @@ class CharactersRepositoryDefault: BaseRepository, CharactersRepository {
     func getCharacterInfo(characterId: Int, completion: @escaping (CharactersResponse?, Error?) -> ()) {
         let dateFormatter = DateFormatter()
         let now = dateFormatter.string(from: Date())
-        let md5Params = MD5(string: now + Constants.privateKey + Constants.publicKey)
-        let md5ParamsHex =  md5Params.map { String(format: "%02hhx", $0) }.joined()
+        let md5ParamsHex = getHashForString(string: now)
         
         let request = RequestBuilder.marvel()
             .get()
@@ -36,6 +34,11 @@ class CharactersRepositoryDefault: BaseRepository, CharactersRepository {
             .builtHttpRequest()
         
         execute(request: request, responseType: CharactersResponse.self, completion: completion)
+    }
+    
+    func getHashForString(string: String) -> String {
+        let md5Params = MD5(string: string + Constants.privateKey + Constants.publicKey)
+        return md5Params.map { String(format: "%02hhx", $0) }.joined()
     }
     
     private func MD5(string: String) -> Data {
