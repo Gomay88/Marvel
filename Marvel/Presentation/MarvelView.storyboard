@@ -43,7 +43,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="NPd-Vq-k2z"/>
                                                     </constraints>
-                                                    <state key="normal" image="suit.heart"/>
+                                                    <state key="normal" image="suit.heart" catalog="system"/>
                                                     <connections>
                                                         <action selector="didTapAddFavourite:" destination="XU8-49-bVB" eventType="touchUpInside" id="uNw-st-YWx"/>
                                                     </connections>
@@ -156,6 +156,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="suit.heart" width="128" height="109"/>
+        <image name="suit.heart" catalog="system" width="128" height="109"/>
     </resources>
 </document>
