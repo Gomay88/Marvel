@@ -63,10 +63,6 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        <#code#>
-    }
 }
 
 extension CharactersListViewController: CharacterListCellDelegate {
