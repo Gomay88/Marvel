@@ -16,8 +16,15 @@ class CharactersListViewController: UIViewController, Spinnable, Alertable {
             })
         }
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favourites", style: .plain, target: self, action: #selector(filterFavourites))
+        
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    @objc func filterFavourites() {
+        presenter.filterFavourites()
+        tableView.reloadData()
     }
     
     func navigateToCharacterDetail(characterId: Int) {
