@@ -2,7 +2,7 @@
 import UIKit
 
 class CharactersListViewController: UIViewController, Spinnable, Alertable {
-    private let presenter: CharactersListPresenter = CharactersListPresenterDefault()
+    private var presenter: CharactersListPresenter = CharactersListPresenterDefault()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,7 +23,11 @@ class CharactersListViewController: UIViewController, Spinnable, Alertable {
     }
     
     @objc func filterFavourites() {
-        presenter.filterFavourites()
+        presenter.filteringFavourites = !presenter.filteringFavourites
+        reloadTable()
+    }
+    
+    func reloadTable() {
         tableView.reloadData()
     }
     
@@ -52,7 +56,7 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterListCell", for: indexPath) as! CharacterListCell
         cell.delegate = self
         cell.nameLabel.text = presenter.characterNameForRow(row: row)
-        cell.isFavourite = presenter.isFavouriteCharacter(row: row)
+        cell.isFavourite = presenter.setFavouriteCharacter(row: row)
         
         guard let url = presenter.characterImagePathForRow(row: row) else {
             return cell

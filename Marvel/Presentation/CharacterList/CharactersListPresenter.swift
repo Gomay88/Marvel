@@ -2,15 +2,16 @@
 import Foundation
 
 protocol CharactersListPresenter {
+    var filteringFavourites: Bool { get set }
+    
     func setView(view: CharactersListViewController)
     func getCharacters(completion: @escaping() -> ())
     func numberOfCharacters() -> Int
     func characterNameForRow(row: Int) -> String
     func characterImagePathForRow(row: Int) -> URL?
-    func isFavouriteCharacter(row: Int) -> Bool
+    func setFavouriteCharacter(row: Int) -> Bool
     func didSelectCharacter(characterId: Int)
     func addCharacterToFavourite(characterIndex: Int)
-    func filterFavourites()
 }
 
 class CharactersListPresenterDefault: CharactersListPresenter {
@@ -18,18 +19,24 @@ class CharactersListPresenterDefault: CharactersListPresenter {
     private let charactersInteractor: CharactersInteractor
     private var userdefaults = UserDefaults.standard
     private var favouriteCharacters: [Int]
-    private var characters = [Character]()
-    private var showingCharacters = [Character]()
-    private weak var view: CharactersListViewController?
-    private var showFavourites = false {
-        didSet {
-            if showFavourites {
-                showingCharacters = characters.filter { favouriteCharacters.contains($0.id) }
+    private var characters: [Character] = [Character]()
+    
+    private var filteredCharacters: [Character] {
+        get {
+            if filteringFavourites {
+                return self.characters.filter { favouriteCharacters.contains($0.id) }
             } else {
-                showingCharacters = characters
+                return self.characters
             }
         }
+        
+        set {
+            self.characters = newValue
+        }
     }
+    
+    private weak var view: CharactersListViewController?
+    var filteringFavourites: Bool = false
     
     init() {
         charactersInteractor = CharactersInteractorDefault()
@@ -50,46 +57,40 @@ class CharactersListPresenterDefault: CharactersListPresenter {
             }
             
             self.characters = characters
-            self.showingCharacters = characters
             completion()
         }
     }
     
     func numberOfCharacters() -> Int {
-        return showingCharacters.count
+        return filteredCharacters.count
     }
     
     func characterNameForRow(row: Int) -> String {
-        return showingCharacters[row].name
+        return filteredCharacters[row].name
     }
     
     func characterImagePathForRow(row: Int) -> URL? {
-        return showingCharacters[row].imageURLPath
+        return filteredCharacters[row].imageURLPath
     }
     
-    func isFavouriteCharacter(row: Int) -> Bool {
-        for favourite in favouriteCharacters {
-            print(favourite)
-        }
-        
-        return favouriteCharacters.contains(showingCharacters[row].id)
+    func setFavouriteCharacter(row: Int) -> Bool {
+        return favouriteCharacters.contains(filteredCharacters[row].id)
     }
     
     func didSelectCharacter(characterId: Int) {
-        view?.navigateToCharacterDetail(characterId: showingCharacters[characterId].id)
+        view?.navigateToCharacterDetail(characterId: filteredCharacters[characterId].id)
     }
     
     func addCharacterToFavourite(characterIndex: Int) {
-        if favouriteCharacters.contains(characters[characterIndex].id) {
-            favouriteCharacters = favouriteCharacters.filter { $0 != characters[characterIndex].id }
+        if favouriteCharacters.contains(filteredCharacters[characterIndex].id) {
+            favouriteCharacters = favouriteCharacters.filter { $0 != filteredCharacters[characterIndex].id }
         } else {
-            favouriteCharacters.append(characters[characterIndex].id)
+            favouriteCharacters.append(filteredCharacters[characterIndex].id)
         }
         
         userdefaults.set(favouriteCharacters, forKey: "FavouriteCharacters")
-    }
-    
-    func filterFavourites() {
-        showFavourites = !showFavourites
+        if filteringFavourites {
+            view?.reloadTable()
+        }
     }
 }
