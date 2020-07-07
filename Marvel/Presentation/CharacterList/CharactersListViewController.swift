@@ -40,10 +40,14 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterListCell", for: indexPath) as! CharacterListCell
-        cell.nameLabel.text = presenter.characterNameForRow(row: indexPath.row)
+        let row = indexPath.row
         
-        guard let url = presenter.characterImagePathForRow(row: indexPath.row) else {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterListCell", for: indexPath) as! CharacterListCell
+        cell.delegate = self
+        cell.nameLabel.text = presenter.characterNameForRow(row: row)
+        cell.isFavourite = presenter.isFavouriteCharacter(row: row)
+        
+        guard let url = presenter.characterImagePathForRow(row: row) else {
             return cell
         }
         
@@ -58,5 +62,19 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        <#code#>
+    }
+}
+
+extension CharactersListViewController: CharacterListCellDelegate {
+    func didTapAddFavorite(cell: CharacterListCell) {
+        guard let favouriteIndexpath = tableView.indexPath(for: cell) else {
+            return
+        }
+        
+        presenter.addCharacterToFavourite(characterIndex: favouriteIndexpath.row)
     }
 }
